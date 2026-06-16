@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── LIGHT THEME (default) ───────────────────── */
+:root,
+[data-theme="light"] {
+  --pink: #C2527A;
+  --pink-light: #F8DDE6;
+  --pink-dark: #9A3A5C;
+  --pink-accent: #D67A96;
+  --pink-soft: #FEF2F6;
+  --pink-mid: #EAA8BC;
+  --purple: #7C3AED;
+  --text-primary: #1A1A2E;
+  --text-secondary: #6B7280;
+  --background: #FFF6F9;
+  --white: #FFFFFF;
+  --border: #F2E4EA;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --card-bg: #FFFFFF;
+  --input-bg: #FFFFFF;
+  --nav-bg: #FFFFFF;
+  --shadow: rgba(194, 82, 122, 0.08);
+  --overlay: rgba(0,0,0,0.5);
+}
+
+/* ── DARK THEME ──────────────────────────────── */
+[data-theme="dark"] {
+  --pink: #D67A96;
+  --pink-light: #3D1A28;
+  --pink-dark: #F0A8BC;
+  --pink-accent: #E292A8;
+  --pink-soft: #2A1020;
+  --pink-mid: #8A4A62;
+  --purple: #9D6FE8;
+  --text-primary: #F5F0F2;
+  --text-secondary: #9CA3AF;
+  --background: #0F0A0C;
+  --white: #1A1218;
+  --border: #2A1E24;
+  --success: #34D399;
+  --warning: #FBBF24;
+  --card-bg: #1E1218;
+  --input-bg: #252025;
+  --nav-bg: #160E12;
+  --shadow: rgba(0,0,0,0.3);
+  --overlay: rgba(0,0,0,0.75);
+}
+
+/* ── BASE ────────────────────────────────────── */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ── BEAUTIFUL SCROLLBAR ─────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pink-mid);
+  border-radius: 4px;
+}
+
+/* ── BEAUTIFUL INPUTS ────────────────────────── */
+input, textarea, select {
+  font-family: 'Inter', sans-serif;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--pink) !important;
+  box-shadow: 0 0 0 3px rgba(194, 82, 122, 0.12);
+}
+
+/* ── BEAUTIFUL BUTTONS ───────────────────────── */
+button {
+  font-family: 'Inter', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── GRADIENT HELPERS ────────────────────────── */
+.gradient-primary {
+  background: linear-gradient(135deg, #C2527A 0%, #D67A96 100%);
+}
+
+.gradient-soft {
+  background: linear-gradient(135deg, #F8DDE6 0%, #FEF2F6 100%);
+}
+
+/* ── ANIMATIONS ──────────────────────────────── */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* ── DARK MODE OVERRIDES ─────────────────────── */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background: var(--input-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="dark"] input[type="range"] {
+  accent-color: var(--pink);
+}
+
+[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+}
+
+[data-theme="dark"] .bottom-nav {
+  background: rgba(22, 14, 18, 0.92) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="dark"] svg text {
+  fill: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .recharts-cartesian-grid-horizontal line,
+[data-theme="dark"] .recharts-cartesian-grid-vertical line {
+  stroke: var(--border) !important;
+}
+
+[data-theme="dark"] .recharts-text {
+  fill: var(--text-secondary) !important;
+}
+
+/* ── SMOOTH TRANSITIONS ──────────────────────── */
+*, *::before, *::after {
+  transition: background-color 0.25s ease,
+              border-color 0.25s ease,
+              color 0.15s ease;
+}

@@ -1,0 +1,258 @@
+.partner-view-screen {
+  padding: 1.5rem 1rem 6rem;
+  background: var(--background);
+  min-height: 100vh;
+}
+
+.partner-view-header {
+  margin-bottom: 1.2rem;
+}
+
+.partner-back {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.partner-view-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 2px;
+}
+
+.partner-view-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Phase card */
+.partner-phase-card {
+  border-radius: 20px;
+  padding: 20px;
+  border: 1.5px solid;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.partner-phase-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.partner-phase-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.partner-phase-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: -0.3px;
+}
+
+.partner-phase-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.partner-phase-ring {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.partner-phase-day {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.partner-phase-of {
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+/* Stats */
+.partner-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.partner-stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.partner-stat-emoji {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.partner-stat-value {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 3px;
+  letter-spacing: -0.5px;
+}
+
+.partner-stat-label {
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Alert */
+.partner-alert {
+  background: #F8DDE6;
+  border: 1px solid #C2527A;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #9A3A5C;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.partner-alert.period {
+  background: #FEF3C7;
+  border-color: #F59E0B;
+  color: #92400E;
+}
+
+/* Tips card */
+.partner-tips-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.partner-tips-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.partner-tip-item {
+  display: flex;
+  align-items: flex-start;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  line-height: 1.5;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.partner-tip-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Timeline */
+.partner-timeline {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.partner-timeline-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.partner-timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.partner-timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.timeline-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.timeline-date {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Privacy note */
+.partner-privacy-note {
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* Unpair button */
+.partner-unpair-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1.5px solid #EF4444;
+  background: var(--white);
+  color: #EF4444;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.partner-unpair-btn:hover {
+  background: #FEF2F2;
+}

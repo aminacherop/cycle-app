@@ -1,0 +1,477 @@
+.intercourse-screen {
+  padding: 1.5rem 1rem 6rem;
+}
+
+.int-header {
+  margin-bottom: 1.5rem;
+}
+
+.int-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.int-date {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 3px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.log-section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.log-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.multi-hint {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-left: 6px;
+}
+
+/* Did not have button */
+.did-not-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  font-size: 14px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.did-not-btn.selected {
+  border-color: var(--pink);
+  background: var(--pink-light);
+  color: var(--pink-dark);
+}
+
+.check {
+  margin-left: auto;
+  color: var(--pink);
+  font-weight: 600;
+}
+
+/* Tags */
+.tag-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-btn {
+  padding: 7px 13px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-primary);
+}
+
+.tag-selected {
+  background: var(--pink-light);
+  border-color: var(--pink);
+  color: var(--pink-dark);
+  font-weight: 500;
+}
+
+/* Protection */
+.protection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.protection-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 10px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.protection-emoji {
+  font-size: 24px;
+}
+
+.protection-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.protection-warning {
+  font-size: 12px;
+  color: #92400E;
+  background: #FEF3C7;
+  border: 1px solid #FCD34D;
+  border-radius: 10px;
+  padding: 10px 12px;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+/* Orgasm counter */
+.orgasm-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.counter-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pink);
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.counter-btn:hover {
+  background: var(--pink-light);
+  border-color: var(--pink);
+}
+
+.counter-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.counter-num {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--pink);
+  line-height: 1;
+}
+
+.counter-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* Save button */
+.save-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--pink);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 8px;
+}
+
+.save-btn:hover {
+  background: var(--pink-dark);
+}
+
+.save-btn.saved {
+  background: #10B981;
+}
+
+.save-btn:disabled {
+  background: #D1D5DB;
+  cursor: not-allowed;
+}
+
+/* Analysis */
+.analysis-section {
+  margin-bottom: 1.2rem;
+}
+
+.analysis-section-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+/* Risk card */
+.risk-card {
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid;
+}
+
+.risk-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.risk-level {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.risk-message {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 200px;
+}
+
+.risk-percent-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.risk-percent-num {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.risk-percent-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.85);
+}
+
+.risk-bar-wrap {
+  margin-bottom: 14px;
+}
+
+.risk-bar-track {
+  height: 8px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.risk-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s ease;
+  max-width: 100%;
+}
+
+.risk-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+.risk-cycle-info {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.risk-cycle-item {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.6);
+  border-radius: 8px;
+  padding: 8px 12px;
+  flex: 1;
+  min-width: 80px;
+}
+
+.risk-cycle-label {
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.risk-cycle-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Activity summary */
+.activity-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.activity-summary-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.activity-summary-emoji {
+  font-size: 24px;
+}
+
+.activity-summary-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.activity-tag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.activity-tag.yes {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+.activity-tag.no {
+  background: #F3F4F6;
+  color: #6B7280;
+}
+
+.activity-tag.warn {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+/* Frequency stats */
+.freq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.freq-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+}
+
+.freq-emoji {
+  font-size: 22px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.freq-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--pink);
+  margin-bottom: 2px;
+}
+
+.freq-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* Bar chart */
+.freq-bar-chart {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.freq-chart-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.freq-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 80px;
+  gap: 8px;
+}
+
+.freq-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.freq-bar-outer {
+  width: 100%;
+  height: 64px;
+  background: var(--background);
+  border-radius: 6px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.freq-bar-inner {
+  width: 100%;
+  border-radius: 6px;
+  transition: height 0.8s ease;
+}
+
+.freq-bar-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
