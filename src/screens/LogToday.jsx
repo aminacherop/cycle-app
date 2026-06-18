@@ -192,6 +192,24 @@ const LogToday = ({ saveLog, getLog, todayLog }) => {
           <span className="intercourse-arrow">→</span>
         </div>
       </div>
+      {/* Medications shortcut */}
+      <div
+        className="log-section intercourse-link"
+        onClick={() => navigate('/medications')}
+      >
+        <div className="intercourse-row">
+          <div>
+            <p className="log-section-title" style={{ marginBottom: 2 }}>
+              💊 Pills & supplements
+            </p>
+            <p style={{ fontSize: 12, color: 'var(--text-secondary)' }}>
+              Track medications and mark as taken
+            </p>
+          </div>
+          <span className="intercourse-arrow">→</span>
+        </div>
+      </div>
+
 
       {/* Mood */}
       <div className="log-section">

@@ -7,13 +7,13 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png'],
       manifest: {
         name: 'CycleApp — Period Tracker',
         short_name: 'CycleApp',
-        description: 'Personal period tracker for Kenyan women. Private, offline-first.',
+        description: 'Private period tracker built for Kenyan women. Offline-first.',
         theme_color: '#C2527A',
-        background_color: '#FDF8F8',
+        background_color: '#FFF6F9',
         display: 'standalone',
         orientation: 'portrait',
         scope: '/',
@@ -36,19 +36,13 @@ export default defineConfig({
             purpose: 'any maskable',
           },
         ],
-        screenshots: [
-          {
-            src: 'screenshot1.png',
-            sizes: '390x844',
-            type: 'image/png',
-            form_factor: 'narrow',
-            label: 'Dashboard view',
-          },
-        ],
         categories: ['health', 'medical', 'lifestyle'],
         lang: 'en',
       },
       workbox: {
+        // Cache all app routes for offline use
+        navigateFallback: 'index.html',
+        navigateFallbackAllowlist: [/^(?!\/__).*/],
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         runtimeCaching: [
           {
@@ -65,10 +59,25 @@ export default defineConfig({
               },
             },
           },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-static',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365,
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
         ],
       },
       devOptions: {
         enabled: true,
+        navigateFallback: 'index.html',
       },
     }),
   ],

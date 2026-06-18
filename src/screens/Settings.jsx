@@ -66,6 +66,11 @@ const Settings = ({ resetAllData, userProfile, cycleSettings }) => {
           <span className="settings-arrow">→</span>
         </div>
       </div>
+      <div className="settings-item" onClick={() => navigate('/medications')}>
+        <span>💊</span>
+        <span>Pills & supplements</span>
+        <span className="settings-arrow">→</span>
+      </div>
 
       {/* Language */}
       <div className="settings-section">

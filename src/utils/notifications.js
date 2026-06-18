@@ -159,6 +159,30 @@ export const scheduleAllReminders = (cycleSettings, notificationPrefs) => {
     )
   }
 }
+// ── MEDICATION REMINDERS ──────────────────────────
+export const scheduleMedicationReminders = (medications) => {
+  if (Notification.permission !== 'granted') return
+
+  medications.forEach(med => {
+    if (!med.active || !med.reminderTime) return
+
+    const [hour, minute] = med.reminderTime.split(':').map(Number)
+    const today = dayjs()
+    let reminderTime = today.hour(hour).minute(minute).second(0)
+
+    if (reminderTime.isBefore(today)) {
+      reminderTime = reminderTime.add(1, 'day')
+    }
+
+    const id = `med-${med.id}`
+    scheduleAt(
+      id,
+      reminderTime,
+      `💊 Time for your ${med.name}`,
+      `Don't forget to take your ${med.name} today!`,
+    )
+  })
+}
 
 // ── SEND IMMEDIATE TEST NOTIFICATION ─────────────
 export const sendTestNotification = () => {

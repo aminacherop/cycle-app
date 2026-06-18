@@ -1,0 +1,475 @@
+.meds-screen {
+  padding: 1.5rem 1rem 6rem;
+  background: var(--background);
+  min-height: 100vh;
+}
+
+.meds-header {
+  margin-bottom: 1.2rem;
+}
+
+.meds-back {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.meds-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 3px;
+}
+
+.meds-sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Today card */
+.meds-today-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.meds-today-card.all-done {
+  background: linear-gradient(135deg, #F8DDE6, #FEF2F6);
+  border-color: #EAA8BC;
+}
+
+.meds-today-icon {
+  font-size: 32px;
+}
+
+.meds-today-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.meds-today-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Empty state */
+.meds-empty {
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+.meds-empty-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.meds-empty-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.meds-empty-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Medication list */
+.meds-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.med-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: opacity 0.2s;
+}
+
+.med-card.inactive {
+  opacity: 0.5;
+}
+
+.med-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.med-card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.med-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.med-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.med-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.med-check {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--white);
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.med-check.checked {
+  background: linear-gradient(135deg, #10B981, #059669);
+  border-color: #10B981;
+  transform: scale(1.05);
+}
+
+/* Stats row */
+.med-stats-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.med-stat {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.med-stat.streak {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.med-stat.adherence {
+  background: #F8DDE6;
+  color: #9A3A5C;
+}
+
+/* Actions */
+.med-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.med-action-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--background);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+
+.med-action-btn.danger {
+  color: #EF4444;
+}
+
+.med-action-btn:hover {
+  border-color: #C2527A;
+}
+
+.med-action-btn.danger:hover {
+  border-color: #EF4444;
+  background: #FEF2F2;
+}
+
+/* Add button */
+.meds-add-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  border: 2px dashed var(--pink-mid);
+  background: var(--white);
+  color: #C2527A;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.meds-add-btn:hover {
+  background: #FEF2F6;
+}
+
+/* Modal */
+.meds-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 999;
+}
+
+.meds-modal {
+  background: var(--white);
+  border-radius: 24px 24px 0 0;
+  padding: 24px 20px 32px;
+  width: 100%;
+  max-width: 430px;
+  max-height: 88vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.meds-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.meds-type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.meds-type-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 6px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 18px;
+}
+
+.meds-type-btn.selected {
+  font-weight: 600;
+}
+
+.meds-type-label {
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.meds-form-group {
+  margin-bottom: 14px;
+}
+
+.meds-form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.meds-form-input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--input-bg);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.meds-form-input:focus {
+  border-color: #C2527A;
+}
+
+.meds-modal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.meds-modal-cancel {
+  flex: 1;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.meds-modal-save {
+  flex: 2;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #C2527A, #9A3A5C);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.meds-modal-save:disabled {
+  background: #D1D5DB;
+  cursor: not-allowed;
+}
+/* Info card */
+.meds-info-card {
+  background: #FEF3C7;
+  border: 1px solid #F59E0B;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 1rem;
+}
+
+.meds-info-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meds-info-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.meds-info-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #92400E;
+  margin-bottom: 2px;
+}
+
+.meds-info-desc {
+  font-size: 12px;
+  color: #B45309;
+}
+
+.meds-info-btn {
+  background: #F59E0B;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+/* Suggestions */
+.meds-suggestion-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.meds-suggestion-tag {
+  font-size: 12px;
+  padding: 5px 12px;
+  background: #F8DDE6;
+  color: #9A3A5C;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* Paused badge */
+.med-paused-badge {
+  font-size: 10px;
+  background: #F3F4F6;
+  color: #6B7280;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+/* Taken today badge */
+.med-stat.taken-today {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+/* List title */
+.meds-list-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Modal sub */
+.meds-modal-sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  margin-top: -10px;
+}

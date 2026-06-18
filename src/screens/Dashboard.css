@@ -775,3 +775,90 @@
   border-color: var(--pink);
   transform: scale(1.05);
 }
+.meds-shortcut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.meds-shortcut:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow);
+}
+
+.meds-shortcut-icon {
+  font-size: 28px;
+}
+
+.meds-shortcut-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.meds-shortcut-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.meds-shortcut-arrow {
+  font-size: 18px;
+  color: #C2527A;
+}
+/* Quick shortcuts grid */
+.shortcuts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shortcut-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.shortcut-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow);
+  border-color: var(--pink-accent);
+}
+
+.shortcut-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.shortcut-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.shortcut-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.shortcut-arrow {
+  font-size: 18px;
+  color: var(--pink);
+  margin-left: auto;
+  flex-shrink: 0;
+}

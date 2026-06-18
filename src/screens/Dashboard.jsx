@@ -4,17 +4,19 @@ import dayjs from 'dayjs'
 import { useNavigate } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
+import usePWAInstall from '../hooks/usePWAInstall'
 
 const Dashboard = ({ cycleSettings, userProfile }) => {
   const navigate = useNavigate()
   const { t, language, changeLanguage } = useLanguage()
-  const { isDark, changeTheme, theme } = useTheme()
+  const { isDark, changeTheme } = useTheme()
+  const { isInstallable, isInstalled, install } = usePWAInstall()
 
   // ── MOOD STATE ─────────────────────────────────
   const [selectedMood, setSelectedMood] = useState(null)
 
   // ── REAL DATA FROM PROPS ───────────────────────
-  const name = userProfile?.name || 'Sarah'
+  const name = userProfile?.name || ''
 
   const cycleLength = cycleSettings?.cycleLength || 28
   const periodLength = cycleSettings?.periodLength || 5
@@ -47,36 +49,35 @@ const Dashboard = ({ cycleSettings, userProfile }) => {
 
   // ── PHASE CONFIG ───────────────────────────────
   const phaseInfo = {
-  Menstrual: {
-    color: '#C2527A',
-    bg: '#F8DDE6',
-    emoji: '🌸',
-    tip: t('phase_menstrual_tip'),
-    fullTip: t('phase_menstrual_tip'),
-  },
-  Follicular: {
-    color: '#7C3AED',
-    bg: '#EDE9FE',
-    emoji: '🌱',
-    tip: t('phase_follicular_tip'),
-    fullTip: t('phase_follicular_tip'),
-  },
-  Ovulation: {
-    color: '#F59E0B',
-    bg: '#FEF3C7',
-    emoji: '✨',
-    tip: t('phase_ovulation_tip'),
-    fullTip: t('phase_ovulation_tip'),
-  },
-  Luteal: {
-    color: '#10B981',
-    bg: '#D1FAE5',
-    emoji: '🍂',
-    tip: t('phase_luteal_tip'),
-    fullTip: t('phase_luteal_tip'),
-  },
-}
-    
+    Menstrual: {
+      color: '#C2527A',
+      bg: '#F8DDE6',
+      emoji: '🌸',
+      tip: t('phase_menstrual_tip'),
+      fullTip: t('phase_menstrual_tip'),
+    },
+    Follicular: {
+      color: '#7C3AED',
+      bg: '#EDE9FE',
+      emoji: '🌱',
+      tip: t('phase_follicular_tip'),
+      fullTip: t('phase_follicular_tip'),
+    },
+    Ovulation: {
+      color: '#F59E0B',
+      bg: '#FEF3C7',
+      emoji: '✨',
+      tip: t('phase_ovulation_tip'),
+      fullTip: t('phase_ovulation_tip'),
+    },
+    Luteal: {
+      color: '#10B981',
+      bg: '#D1FAE5',
+      emoji: '🍂',
+      tip: t('phase_luteal_tip'),
+      fullTip: t('phase_luteal_tip'),
+    },
+  }
 
   // ── GREETING ───────────────────────────────────
   const hour = todayDate.hour()
@@ -101,34 +102,53 @@ const Dashboard = ({ cycleSettings, userProfile }) => {
   return (
     <div className="dashboard">
 
-      {/* Header */}
-      {/* Header */}
-<div className="header">
-  <div>
-    <p className="greeting">{greeting} 👋</p>
-    <h2 className="username">{name}</h2>
-  </div>
-  <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-    <button
-      className="lang-switch-btn"
-      onClick={() => changeLanguage(language === 'en' ? 'sw' : 'en')}
-      title="Switch language"
-    >
-      {language === 'en' ? '🇰🇪' : '🇬🇧'}
-    </button>
-    <button
-    className="lang-switch-btn"
-    onClick={() => changeTheme(isDark ? 'light' : 'dark')}
-  >
-    {isDark ? '☀️' : '🌙'}
-  </button>
-    <div className="notif-btn" onClick={() => navigate('/notifications')}>
-      🔔
-    </div>
-  </div>
-</div>
+      {/* ── HEADER ── */}
+      <div className="header">
+        <div>
+          <p className="greeting">{greeting} 👋</p>
+          <h2 className="username">{name}</h2>
+        </div>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <button
+            className="lang-switch-btn"
+            onClick={() => changeLanguage(language === 'en' ? 'sw' : 'en')}
+            title="Switch language"
+          >
+            {language === 'en' ? '🇰🇪' : '🇬🇧'}
+          </button>
+          <button
+            className="lang-switch-btn"
+            onClick={() => changeTheme(isDark ? 'light' : 'dark')}
+            title="Toggle dark mode"
+          >
+            {isDark ? '☀️' : '🌙'}
+          </button>
+          <div
+            className="notif-btn"
+            onClick={() => navigate('/notifications')}
+          >
+            🔔
+          </div>
+        </div>
+      </div>
 
-      {/* Cycle Ring Card */}
+      {/* ── PWA INSTALL BANNER ── */}
+      {isInstallable && !isInstalled && (
+        <div className="install-banner">
+          <div className="install-banner-left">
+            <span className="install-icon">📲</span>
+            <div>
+              <p className="install-title">Install CycleApp</p>
+              <p className="install-desc">Add to home screen for offline use</p>
+            </div>
+          </div>
+          <button className="install-btn" onClick={install}>
+            Install
+          </button>
+        </div>
+      )}
+
+      {/* ── CYCLE RING CARD ── */}
       <div className="cycle-card" style={{ background: phase.bg }}>
         <div className="cycle-ring-wrapper">
           <svg width="140" height="140" viewBox="0 0 120 120">
@@ -145,16 +165,34 @@ const Dashboard = ({ cycleSettings, userProfile }) => {
               strokeWidth="10"
               strokeLinecap="round"
               strokeDasharray={circumference}
-              strokeDashoffset={circumference - (progress / 100) * circumference}
+              strokeDashoffset={
+                circumference - (progress / 100) * circumference
+              }
               transform="rotate(-90 60 60)"
             />
-            <text x="60" y="52" textAnchor="middle" fontSize="11" fill="#6B7280">
+            <text
+              x="60" y="52"
+              textAnchor="middle"
+              fontSize="11"
+              fill="#6B7280"
+            >
               {t('cycle_day')}
             </text>
-            <text x="60" y="68" textAnchor="middle" fontSize="26" fontWeight="600" fill={phase.color}>
+            <text
+              x="60" y="68"
+              textAnchor="middle"
+              fontSize="26"
+              fontWeight="600"
+              fill={phase.color}
+            >
               {cycleData.currentDay}
             </text>
-            <text x="60" y="82" textAnchor="middle" fontSize="10" fill="#6B7280">
+            <text
+              x="60" y="82"
+              textAnchor="middle"
+              fontSize="10"
+              fill="#6B7280"
+            >
               of {cycleData.cycleLength}
             </text>
           </svg>
@@ -183,26 +221,32 @@ const Dashboard = ({ cycleSettings, userProfile }) => {
         </div>
       </div>
 
-      {/* Period alert — coming soon */}
+      {/* ── PERIOD ALERT — coming soon ── */}
       {cycleData.daysUntilPeriod <= 5 && cycleData.daysUntilPeriod > 0 && (
-  <div className="period-alert" style={{
-    background: '#F8DDE6',
-    border: '1px solid #C2527A',
-    color: '#9A3A5C',
-  }}>
-    🌸 {t('period_coming')} {cycleData.daysUntilPeriod} {t('days')}
-  </div>
-)}
-      
+        <div className="period-alert">
+          🌸 {t('period_coming')} {cycleData.daysUntilPeriod} {t('days')}
+        </div>
+      )}
 
-      {/* Period alert — today */}
+      {/* ── PERIOD ALERT — today ── */}
       {cycleData.daysUntilPeriod === 0 && currentPhase !== 'Menstrual' && (
         <div className="period-alert">
           🩸 {t('period_today')}
         </div>
       )}
 
-      {/* Quick Log */}
+      {/* ── OVULATION ALERT ── */}
+      {cycleData.daysUntilOvulation <= 2 &&
+        cycleData.daysUntilOvulation >= 0 &&
+        currentPhase !== 'Menstrual' && (
+        <div className="ovulation-alert">
+          ✨ {cycleData.daysUntilOvulation === 0
+            ? t('ovulation_today')
+            : `${t('ovulation_soon')} ${cycleData.daysUntilOvulation} ${t('days')}`}
+        </div>
+      )}
+
+      {/* ── HOW ARE YOU FEELING ── */}
       <div className="section">
         <p className="section-title">{t('how_feeling')}</p>
         <div className="quick-log">
@@ -225,7 +269,7 @@ const Dashboard = ({ cycleSettings, userProfile }) => {
         </div>
       </div>
 
-      {/* Today's Stats */}
+      {/* ── TODAY'S STATS ── */}
       <div className="section">
         <p className="section-title">{t('todays_log')}</p>
         <div className="stats-row">
@@ -247,21 +291,13 @@ const Dashboard = ({ cycleSettings, userProfile }) => {
         </div>
       </div>
 
-      {/* Ovulation alert */}
-      {cycleData.daysUntilOvulation <= 2 &&
-        cycleData.daysUntilOvulation >= 0 &&
-        currentPhase !== 'Menstrual' && (
-        <div className="ovulation-alert">
-          ✨ {cycleData.daysUntilOvulation === 0
-            ? t('ovulation_today')
-            : `${t('ovulation_soon')} ${cycleData.daysUntilOvulation} ${t('days')}`}
-        </div>
-      )}
-
-      {/* Phase tip */}
+      {/* ── PHASE TIP ── */}
       <div className="section">
         <p className="section-title">{t('tip_for_phase')}</p>
-        <div className="tip-card" style={{ borderLeft: `4px solid ${phase.color}` }}>
+        <div
+          className="tip-card"
+          style={{ borderLeft: `4px solid ${phase.color}` }}
+        >
           <p className="tip-title" style={{ color: phase.color }}>
             {phase.emoji} {t(`phase_${cycleData.phase.toLowerCase()}`)} phase
           </p>
@@ -269,7 +305,7 @@ const Dashboard = ({ cycleSettings, userProfile }) => {
         </div>
       </div>
 
-      {/* Cycle summary bar */}
+      {/* ── CYCLE SUMMARY BAR ── */}
       <div className="section">
         <p className="section-title">{t('this_cycle')}</p>
         <div className="cycle-summary-bar">
@@ -291,22 +327,62 @@ const Dashboard = ({ cycleSettings, userProfile }) => {
             </p>
           </div>
         </div>
-        {/* Health articles shortcut */}
-        <div className="section">
-            <div className="articles-shortcut" onClick={() => navigate('/articles')}>
-                <div className="articles-shortcut-left">
-      <span className="articles-shortcut-icon">📚</span>
-      <div>
-        <p className="articles-shortcut-title">Health Articles</p>
-        <p className="articles-shortcut-desc">
-          Learn about your cycle, PCOS, fertility & more
-        </p>
       </div>
-    </div>
-    <span className="articles-shortcut-arrow">→</span>
-  </div>
-</div>
 
+      {/* ── QUICK SHORTCUTS ── */}
+      <div className="section">
+        <p className="section-title">Quick access</p>
+        <div className="shortcuts-grid">
+
+          <div
+            className="shortcut-card"
+            onClick={() => navigate('/articles')}
+          >
+            <span className="shortcut-icon">📚</span>
+            <div>
+              <p className="shortcut-title">Health Articles</p>
+              <p className="shortcut-desc">Cycle, PCOS, fertility</p>
+            </div>
+            <span className="shortcut-arrow">→</span>
+          </div>
+
+          <div
+            className="shortcut-card"
+            onClick={() => navigate('/medications')}
+          >
+            <span className="shortcut-icon">💊</span>
+            <div>
+              <p className="shortcut-title">Pills & Supplements</p>
+              <p className="shortcut-desc">Daily reminders</p>
+            </div>
+            <span className="shortcut-arrow">→</span>
+          </div>
+
+          <div
+            className="shortcut-card"
+            onClick={() => navigate('/partner/invite')}
+          >
+            <span className="shortcut-icon">👫</span>
+            <div>
+              <p className="shortcut-title">Partner sharing</p>
+              <p className="shortcut-desc">Share cycle summary</p>
+            </div>
+            <span className="shortcut-arrow">→</span>
+          </div>
+
+          <div
+            className="shortcut-card"
+            onClick={() => navigate('/notifications')}
+          >
+            <span className="shortcut-icon">🔔</span>
+            <div>
+              <p className="shortcut-title">Reminders</p>
+              <p className="shortcut-desc">Period & ovulation alerts</p>
+            </div>
+            <span className="shortcut-arrow">→</span>
+          </div>
+
+        </div>
       </div>
 
     </div>
